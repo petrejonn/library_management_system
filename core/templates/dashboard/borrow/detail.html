@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30">
+        <div class="product-slider">
+            <div id="productslider-1" class="product-carousel carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block img-fluid" src="{{borrow.book.image.url}}">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
+        <div class="product-details">
+            <div class="border-bottom pb-3 mb-3">
+                <h2 class="mb-3">{{borrow.book}}</h2>
+                <div class="product-rating d-inline-block float-right">
+                    <p>{{borrow.book.ISBN}}</p>
+                </div>
+                <h3 class="mb-0 text-grey">{{borrow.book.author}}</h3>
+            </div>
+            <div class="product-colors border-bottom">
+                <h4><small>User Name: </small>{{borrow.user}}</h4>
+                <h4><small>User Phone: </small>{{borrow.user.phone}}</h4>
+            </div>
+            <div class="product-size border-bottom">
+                <h4>Issue Staff</h4>
+                <div class="btn-group" role="group" aria-label="First group">
+                    <p>{{borrow.issuing_staff}}</p>
+                </div>
+                <div class="product-qty">
+                    <h4>Collection Staff</h4>
+                    <div class="quantity">
+                        {{borrow.recieving_staff}}
+                    </div>
+                </div>
+            </div>
+            <div class="product-description">
+                <h4 class="mb-1">Extra Details</h4>
+                <p>{{borrow.extra_details}}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg">Return</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'dashboard/base.html' %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+
+
+<div class="card">
+    <h5 class="card-header">Update Book</h5>
+    <div class="card-body">
+        <form method="post" class="form" , enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+{% endblock content %}

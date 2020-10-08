@@ -1,0 +1,26 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+<div class="row">
+    {% for user in libraryuser_list %}
+
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card campaign-card text-center">
+            <div class="card-body p-0">
+                <img src="{{user.photo.url}}" alt="user" class="user-avatar-xl rounded">
+                <div class="campaign-info">
+                    <h3 class="mb-1">{{user}}</h3>
+                    <p class="mb-1">{{user.phone}}</p>
+                    <p class="mb-1">Deparment:<span class="text-dark font-medium ml-2">{{user.department}}</span></p>
+                    <p>Books Borrowed: <span class="text-dark font-medium ml-2">{{user.borrowed.count}}</span></p>
+                    <a href="{% url 'core:user_update' user.id %}" class="btn btn-success btn-sm">Edit</a>
+                    <a href="{% url 'core:user_delete' user.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

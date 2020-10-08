@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+<div class="row">
+
+    {% for book in book_list %}
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{book.image.url}}" class="card-img" style="min-height: 175px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body p-t-0 p-b-0">
+                        <h5 class="card-title" style="margin: 0px;">{{book.title}}</h5>
+                        <p class="card-text" style="margin: 0px;"><small class="text-muted">Author</small>:
+                            {{book.author}}</p>
+                        <p class="card-text" style="margin: 0px;"><small class="text-muted">ISBN</small>: {{book.ISBN}}
+                        </p>
+                        <p class="card-text" style="margin: 0px;"><small class="text-muted">Publisher</small>:
+                            {{book.publisher}}</p>
+                        <p class="card-text" style="margin: 0px;"><small class="text-muted">Copies</small>:
+                            {{book.copies_available}}/{{book.copies}}</p>
+                        <p class="card-text" style="margin: 0px;"><small class="text-muted">Category</small>:
+                            {{book.category}}</p>
+                        <a href="{% url 'core:borrow_create' book.id %}" class="btn btn-sm btn-info">Issue</a>
+                        <a href="{% url 'core:book_update' book.id %}" class="btn btn-sm btn-success">Edit</a>
+                        <a href="{% url 'core:book_delete' book.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+{% endblock content %}

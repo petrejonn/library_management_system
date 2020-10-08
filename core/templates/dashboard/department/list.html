@@ -1,0 +1,24 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+<div class="row">
+    {% for department in department_list %}
+
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 ">
+        <div class="card sidebar-dark">
+            <div class="card-header d-flex sidebar-dark" style="background-color: #0e0c28; border-bottom:#0e0c28;">
+                <div class="toolbar ml-auto sidebar-dark">
+                    <a href="{% url 'core:department_update' department.id %}" class="btn btn-success btn-sm ">Edit</a>
+                    <a href="{% url 'core:department_delete' department.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-header-title">{{department.name}}</h4>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

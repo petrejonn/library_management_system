@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <h5 class="card-header">Delete User</h5>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    {# Display a form #}
+                    <form method="post" class="form-horizontal form-material">
+                        {% csrf_token %}
+                        <p>Are you sure you want to delete "{{ object }}"?</p>
+                        {% buttons %}
+                        <button type="submit" class="btn btn-danger">
+                            Confirm
+                        </button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
